@@ -5,7 +5,7 @@ project(
   LANGUAGES CXX
 )
 
-
+file( COPY templates DESTINATION Debug/)
 find_package( Boost 1.82.0 REQUIRED COMPONENTS system thread regex )
 ADD_EXECUTABLE( CrowTesting src/test.cpp )
 target_link_libraries(CrowTesting PUBLIC
