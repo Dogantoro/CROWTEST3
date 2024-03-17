@@ -1,4 +1,4 @@
-#include "crow_all.h"
+#include "../include/crow.h"
 
 int main()
 {
@@ -10,8 +10,8 @@ int main()
         return page;
     });
 
-    CROW_ROUTE(app, "/drug")([](const crow::request& req){
-        auto x = req.url_params.get("DrugName");
+    CROW_ROUTE(app, "/drug").methods("POST"_method)([](const crow::request& req) {
+        auto x = req.get_body_params().get("DrugName");
         if (!x) return crow::response{"Ruh Roh!"};
         return crow::response{x};
     });
