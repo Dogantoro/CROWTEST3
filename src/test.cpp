@@ -1,4 +1,7 @@
 #include "../include/crow.h"
+#include <boost/algorithm/string.hpp>
+#include <boost/url/src.hpp>
+#include <boost/url/grammar/alnum_chars.hpp>
 
 int main()
 {
@@ -10,10 +13,31 @@ int main()
         return page;
     });
 
-    CROW_ROUTE(app, "/drug").methods("POST"_method)([](const crow::request& req) {
-        auto x = req.get_body_params().get("DrugName");
-        if (!x) return crow::response{"Ruh Roh!"};
-        return crow::response{x};
+    CROW_ROUTE(app, "/drug").methods("POST"_method)([](const crow::request& req, crow::response &res) {
+        auto x = req.get_body_params();
+        auto y = x.get("DrugName");
+        if (!y) {
+            res.redirect("/");
+            res.end();
+            return;
+        }
+        auto z = std::string(y);
+        auto w = boost::urls::encode(z, boost::urls::unreserved_chars);
+        res.redirect("/drug/" + w);
+        res.end();
+    });
+
+    CROW_ROUTE(app, "/drug").methods("GET"_method)([](const crow::request& req, crow::response &res) {
+        res.redirect("/");
+        res.end();
+    });
+
+    CROW_ROUTE(app, "/drug/<string>").methods("POST"_method, "GET"_method)([](std::string a) {
+        boost::urls::pct_string_view decoded(a);
+        auto txt = decoded.decode();
+        auto page = crow::mustache::load("drug.html");
+        crow::mustache::context ctx ({{"DrugName", txt}});
+        return page.render(ctx);
     });
 
     //set the port, set the app to run on multiple threads, and run the app
