@@ -12,34 +12,38 @@
   
   <body>
 	
-	<nav class="navbar" data-bs-theme="dark">
-	  <div class="container-fluid">
-		<a class="navbar-brand" aria-current="page" href="#">
-			<p class="nav-title">Rx Warning</p>
-		</a>
-		
-		<div class="collapse navbar-collapse" id="navbarText">
-		  <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-			<li class="nav-item">
-			  <a class="nav-link" href="#">About</a>
-			</li>
-		  </ul>
-		  
-		  <span class="navbar-text">
-			Stay safe with us
-		  </span>
-		  
-		</div>
+	<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+	  <div class="container-fluid ">
+      
+      <a class="navbar-brand" aria-current="page" href="#">
+        <p class="nav-title fs-3 mb-0">Rx Warning</p>
+      </a>
+      
+      <button class="navbar-toggler mt-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse " id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link nav-item fs-4" href="#">About Us</a>
+          </li>
+        </ul>
+        <span class="navbar-text nav-item fs-4">
+        Stay safe with us
+        </span>
+      </div>
+      
 	  </div>
 	</nav>    
 	
 	<div class="container-md mt-5">
-		<h1 class="display-1 text-center">Check Drug Interactions!</h1>
+		<h1 class="display-1 text-center nav-title">Check Drug Interactions!</h1>
 		
 		<form action="/drug" method="POST" id="searchbar">
 			<div class="input-group mb-3 mt-5 w-50 position-absolute start-50 translate-middle">
 				<input type="text" class="form-control" placeholder="Drug Name" aria-label="Recipient's username" aria-describedby="button-addon2" name="DrugName">
-				<button class="btn btn-outline-success" type="submit" value="Submit" id="button-addon2" form="searchbar">Search</button>
+				<button class="btn" type="submit" value="Submit" id="button-addon2" form="searchbar">Search</button>
 			</div>
 		</form>
 	</div>
