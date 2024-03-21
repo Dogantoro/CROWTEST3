@@ -12,7 +12,7 @@
   
   <body>
 	
-	<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+	<nav class="navbar navbar-expand-lg pt-1" data-bs-theme="dark">
 	  <div class="container-fluid ">
       
       <a class="navbar-brand" aria-current="page" href="#">
@@ -37,15 +37,25 @@
 	  </div>
 	</nav>    
 	
-	<div class="container-md mt-5">
-		<h1 class="display-1 text-center nav-title">Check Drug Interactions!</h1>
-		
-		<form action="/drug" method="POST" id="searchbar">
-			<div class="input-group mb-3 mt-5 w-50 position-absolute start-50 translate-middle">
-				<input type="text" class="form-control" placeholder="Drug Name" aria-label="Recipient's username" aria-describedby="button-addon2" name="DrugName">
-				<button class="btn" type="submit" value="Submit" id="button-addon2" form="searchbar">Search</button>
-			</div>
-		</form>
+  
+	<div class="container container-md mt-5 justify-content-center" >
+    
+    <div class= "row">
+      <h1 class="text-center nav-title display-1">Check Drug Interactions!</h1>
+    </div>
+    
+    <form action="/drug" method="POST" id="searchbar">
+      <div class= "row justify-content-center">
+        <div class="col-6">
+            <input type="text" class="form-control search-bar" placeholder="Drug Name" aria-label="Recipient's username" aria-describedby="button-addon2" name="DrugName">
+        </div>
+        
+        <div class="col-1">
+          <button class="btn btn-outline-light search-bar" type="submit" value="Submit" id="button-addon2" form="searchbar">Search</button>
+        </div>
+      </div>
+    </form>
+    
 	</div>
 	
 	

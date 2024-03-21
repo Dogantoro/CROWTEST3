@@ -12,10 +12,14 @@ body {
 	font-weight: 400;
 }
 
-.nav-item{
+.nav-item {
 	color: #FFF;
 	font-family: Koulen;
 	font-style: normal;
 	font-weight: 400;
 	filter: blur(0.4px);
+}
+
+.search-bar {
+	border-radius: 50px;
 }
