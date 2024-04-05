@@ -13,6 +13,11 @@ int main()
         return page;
     });
 
+    CROW_ROUTE(app, "/styles")([](){
+        auto page = crow::mustache::load_text("css/style.css");
+        return page;
+    });
+
     CROW_ROUTE(app, "/drug").methods("POST"_method)([](const crow::request& req, crow::response &res) {
         auto x = req.get_body_params();
         auto y = x.get("DrugName");

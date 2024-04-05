@@ -14,3 +14,5 @@ target_link_libraries(CrowTesting PUBLIC
   Boost::thread
   Boost::regex
 )
+message(DEBUG "debug test")
+message(Boost_INCLUDE_DIRS="${Boost_INCLUDE_DIRS}")

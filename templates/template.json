@@ -1,0 +1,22 @@
+{ "drug": {
+    "drugName": "",
+    "activeIngredients": "",
+    "brandNames": [""],
+    "generics": [""],
+
+    "interactions": {
+        "major": [
+            {"name": "", "type": ""}
+        ],
+        "moderate": [
+            {"name": "", "type": ""}
+        ],
+        "minor": [
+            {"name": "", "type": ""}
+        ],
+        "unknown": [
+            {"name": "", "type": ""}
+        ]
+    }
+
+}}
