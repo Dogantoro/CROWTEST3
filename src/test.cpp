@@ -13,7 +13,12 @@ int main()
         return page;
     });
 
-    CROW_ROUTE(app, "/styles")([](){
+    CROW_ROUTE(app, "/css/style.css")([](){
+        auto page = crow::mustache::load_text("css/style.css");
+        return page;
+    });
+
+    CROW_ROUTE(app, "/scripts/nav.js")([](){
         auto page = crow::mustache::load_text("css/style.css");
         return page;
     });
@@ -43,6 +48,11 @@ int main()
         auto page = crow::mustache::load("drug.html");
         crow::mustache::context ctx ({{"DrugName", txt}});
         return page.render(ctx);
+    });
+
+    CROW_ROUTE(app, "/dev/json")([](){
+        auto page = crow::mustache::load_text("template.json");
+        return page;
     });
 
     //set the port, set the app to run on multiple threads, and run the app

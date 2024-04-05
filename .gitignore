@@ -83,3 +83,5 @@ build/x64/Debug/ZERO_CHECK/ZERO_CHECK.tlog/CustomBuild.read.1.tlog
 build/x64/Debug/ZERO_CHECK/ZERO_CHECK.tlog/CustomBuild.write.1.tlog
 build/x64/Debug/ZERO_CHECK/ZERO_CHECK.tlog/ZERO_CHECK.lastbuildstate
 .vscode/settings.json
+build/.cmake/api/v1/reply/index-2024-04-05T18-11-55-0129.json
+build/Debug/templates/scripts/nav.js
