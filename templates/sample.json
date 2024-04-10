@@ -1,0 +1,21 @@
+{
+    "drugName": "Drug Name",
+    "activeIngredients": "Ingredient Name",
+    "brandNames": ["brand name 1", "brand name 2"],
+    "generics": ["generic 1", "generic 2"],
+
+    "interactions": {
+        "major": [
+            {"name": "other drug", "type": "interaction type"}
+        ],
+        "moderate": [
+            {"name": "other drug", "type": "interaction type"}
+        ],
+        "minor": [
+            {"name": "other drug", "type": "interaction type"}
+        ],
+        "unknown": [
+            {"name": "other drug", "type": "interaction type"}
+        ]
+    }
+}
