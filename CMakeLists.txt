@@ -5,7 +5,8 @@ project(
   LANGUAGES CXX
 )
 
-file( COPY templates DESTINATION Debug/)
+add_definitions( -DSOURCE_DIR="${PROJECT_SOURCE_DIR}" )
+
 find_package( Boost 1.82.0 REQUIRED COMPONENTS system thread regex )
 ADD_EXECUTABLE( rx-server src/server.cpp src/json-mgr.h)
 target_include_directories(rx-server PRIVATE ${Boost_INCLUDE_DIRS})
