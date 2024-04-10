@@ -1,14 +1,14 @@
 #pragma once
+#include <string>
 #include <vector>
 #include <unordered_map>
-using namespace std;
 
 class AdjList {
 private:
     // idk what im storing so ill do strings for now (drug names pointing to drug names)
-    unordered_map<string, vector<string>> graph;
+    std::unordered_map<std::string, std::vector<std::string>> graph;
 public:
-    void addEdge(string from, string to);
-    vector<string> getAdjacent(string vertex);
+    void addEdge(std::string from, std::string to);
+    std::vector<std::string> getAdjacent(std::string vertex);
 
 };
