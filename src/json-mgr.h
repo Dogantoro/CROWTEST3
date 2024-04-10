@@ -16,7 +16,7 @@ struct DrugInfo {
     std::string ingredients;
     std::vector<std::string> brandNames;
     std::vector<std::string> Generics;
-}
+};
 
 struct InteractionDesc {
     std::string name;
