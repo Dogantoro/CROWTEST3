@@ -50,12 +50,9 @@ body {
 h2 {
 	color: #000;
 	font-family: Inter;
-	font-size: 36px;
 	font-style: normal;
 	font-weight: 800;
+	font-size: calc(0.5em + 2vw);
+
 }
 
-br.primary {
-	height: 4px;
-	background: #000;
-}

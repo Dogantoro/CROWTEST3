@@ -5,20 +5,21 @@
 
 int main()
 {
-    crow::SimpleApp app; //define your crow application
+    crow::SimpleApp app; // define your crow application
 
-    //define your endpoint at the root directory
-    CROW_ROUTE(app, "/")([](){
+    // load files at specified directories
+
+    CROW_ROUTE(app, "/")([](){  // homepage
         auto page = crow::mustache::load_text("index.html");
         return page;
     });
 
-    CROW_ROUTE(app, "/css/style.css")([](){
+    CROW_ROUTE(app, "/css/style.css")([](){  // css file
         auto page = crow::mustache::load_text("css/style.css");
         return page;
     });
 
-    CROW_ROUTE(app, "/scripts/nav.js")([](){
+    CROW_ROUTE(app, "/scripts/nav.js")([](){  // navbar script
         auto page = crow::mustache::load_text("scripts/nav.js");
         return page;
     });
@@ -56,7 +57,7 @@ int main()
         res.end();
     });
 
-    CROW_ROUTE(app, "/drug/<string>").methods("POST"_method, "GET"_method)([](std::string a) {
+    CROW_ROUTE(app, "/drug/<string>").methods("POST"_method, "GET"_method)([](std::string a) {  // drug page
         boost::urls::pct_string_view decoded(a);
         auto txt = decoded.decode();
         auto page = crow::mustache::load("drug.html");
@@ -64,7 +65,7 @@ int main()
         return page.render(ctx);
     });
 
-    CROW_ROUTE(app, "/dev/json")([](){
+    CROW_ROUTE(app, "/dev/json")([](){  // json template
         auto page = crow::mustache::load_text("template.json");
         return page;
     });
