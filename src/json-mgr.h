@@ -2,7 +2,7 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <boost/json.hpp>
+#include <boost/json/src.hpp>
 
 enum class InteractionSeverity {
     UNKNOWN,
