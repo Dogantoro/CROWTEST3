@@ -19,7 +19,7 @@ int main()
     });
 
     CROW_ROUTE(app, "/scripts/nav.js")([](){
-        auto page = crow::mustache::load_text("css/style.css");
+        auto page = crow::mustache::load_text("scripts/nav.js");
         return page;
     });
     
