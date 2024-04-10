@@ -2,13 +2,14 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/url/src.hpp>
 #include <boost/url/grammar/alnum_chars.hpp>
+#include <string>
 
 int main()
 {
-    crow::SimpleApp app; // define your crow application
+    crow::SimpleApp app;
+    crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
 
     // load files at specified directories
-
     CROW_ROUTE(app, "/")([](){  // homepage
         auto page = crow::mustache::load_text("index.html");
         return page;
