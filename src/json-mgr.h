@@ -27,7 +27,7 @@ struct InteractionDesc {
 boost::json::array jsonize(const std::vector<std::string>& vec) {
     boost::json::array arr;
     for (const auto& str : vec) {
-        arr.push_back(str);
+        arr.emplace_back(str);
     }
     return arr;
 }
@@ -36,6 +36,8 @@ boost::json::object jsonize(const InteractionDesc interaction) {
     boost::json::object obj;
     obj["name"] = interaction.name;
     obj["type"] = interaction.type;
+
+    return obj;
 }
 
 std::string DrugSerializer(const DrugInfo drug, const std::vector<InteractionDesc> &interactionList) {

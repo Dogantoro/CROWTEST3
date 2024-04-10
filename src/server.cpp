@@ -2,6 +2,8 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/url/src.hpp>
 #include <boost/url/grammar/alnum_chars.hpp>
+#include <boost/json/src.hpp>
+#include "json-mgr.h"
 
 int main()
 {

@@ -7,7 +7,7 @@ project(
 
 file( COPY templates DESTINATION Debug/)
 find_package( Boost 1.82.0 REQUIRED COMPONENTS system thread regex )
-ADD_EXECUTABLE( rx-server src/server.cpp )
+ADD_EXECUTABLE( rx-server src/server.cpp src/json-mgr.h)
 target_include_directories(rx-server PRIVATE ${Boost_INCLUDE_DIRS})
 target_link_libraries(rx-server PUBLIC
   Boost::system
