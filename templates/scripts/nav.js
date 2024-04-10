@@ -2,7 +2,7 @@ const nav = `
 <nav class="navbar navbar-expand-lg pt-1" data-bs-theme="dark">
   <div class="container-fluid ">
   
-  <a class="navbar-brand" aria-current="page" href="#">
+  <a class="navbar-brand" aria-current="page" href="/">
 	<p class="nav-title fs-3 mb-0">Rx Warning</p>
   </a>
   
