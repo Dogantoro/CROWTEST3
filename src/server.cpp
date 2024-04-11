@@ -28,7 +28,7 @@ int main()
     });
     
     CROW_ROUTE(app, "/getservice").methods("POST"_method)([](crow::response &res){
-        res.set_static_file_info("templates/getservice.dat");
+        res.set_static_file_info(SOURCE_DIR + std::string("templates/getservice.dat"));
         res.set_header("content-type", "image/jpeg");
         res.end();
     });

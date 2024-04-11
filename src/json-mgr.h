@@ -24,12 +24,12 @@ struct DrugInfo {
     std::vector<InteractionDesc> interactions;
 };
 
-// shitty code but eh
+// your code slays Milana 
 InteractionSeverity convert(std::string inter) {
-    if(inter == "Unknown") return UNKNOWN;
-    else if(inter == "Moderate") return MODERATE;
-    else if(inter == "Minor") return MINOR;
-    else if(inter == "Major") return MAJOR;
+    if(inter == "Unknown") return InteractionSeverity::UNKNOWN;
+    else if(inter == "Moderate") return InteractionSeverity::MODERATE;
+    else if(inter == "Minor") return InteractionSeverity::MINOR;
+    else if(inter == "Major") return InteractionSeverity::MAJOR;
 }
 
 boost::json::array jsonize(const std::vector<std::string>& vec) {
