@@ -16,11 +16,11 @@ struct DrugInfo {
     std::string ingredients;
     std::vector<std::string> brandNames;
     std::vector<std::string> Generics;
+    std::vector<InteractionDesc> interactions;
 };
 
 struct InteractionDesc {
     std::string name;
-    std::string type;
     InteractionSeverity severity;
 };
 
@@ -35,8 +35,6 @@ boost::json::array jsonize(const std::vector<std::string>& vec) {
 boost::json::object jsonize(const InteractionDesc interaction) {
     boost::json::object obj;
     obj["name"] = interaction.name;
-    obj["type"] = interaction.type;
-
     return obj;
 }
 
