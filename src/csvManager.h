@@ -18,9 +18,9 @@ void processCSVs(){
         std::ifstream inFile(curFile);
         std::string temp;
 
-        for (int i = 0; i < 4; i++){
-            getline(inFile, temp, ',');
+        while(getline(inFile, temp, ',')){
             std::cout << temp << std::endl;
+
         }
 
     }
