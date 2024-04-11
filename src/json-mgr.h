@@ -11,17 +11,17 @@ enum class InteractionSeverity {
     MAJOR
 };
 
+struct InteractionDesc {
+    std::string name;
+    InteractionSeverity severity;
+};
+
 struct DrugInfo {
     std::string name;
     std::string ingredients;
     std::vector<std::string> brandNames;
     std::vector<std::string> Generics;
     std::vector<InteractionDesc> interactions;
-};
-
-struct InteractionDesc {
-    std::string name;
-    InteractionSeverity severity;
 };
 
 boost::json::array jsonize(const std::vector<std::string>& vec) {

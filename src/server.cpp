@@ -3,10 +3,12 @@
 #include <boost/url/src.hpp>
 #include <boost/url/grammar/alnum_chars.hpp>
 #include <string>
+#include "csvManager.h"
 #include "json-mgr.h"
 
 int main()
 {
+    processCSVs();
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
 
