@@ -8,7 +8,6 @@
 
 int main()
 {
-    processCSVs();
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
 
