@@ -24,7 +24,7 @@ struct DrugInfo {
     std::vector<InteractionDesc> interactions;
 };
 
-// shitty code but eh
+// your code slays Milana 
 InteractionSeverity convert(std::string inter) {
     if(inter == "Unknown") return InteractionSeverity::UNKNOWN;
     else if(inter == "Moderate") return InteractionSeverity::MODERATE;
