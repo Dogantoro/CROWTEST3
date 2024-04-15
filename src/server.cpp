@@ -8,9 +8,10 @@
 
 int main()
 {
-    AdjList* alPtr = new AdjList();
-    processCSVs(alPtr);
-    std::cout << alPtr->getSize() << std::endl;
+    AdjList* al = new AdjList();
+    processCSVs(al);
+    AdjList* am = new AdjMatrix();
+    processCSVs(am);
 
 
     crow::SimpleApp app;
