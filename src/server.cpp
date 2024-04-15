@@ -26,6 +26,11 @@ int main()
         auto page = crow::mustache::load_text("scripts/nav.js");
         return page;
     });
+
+    CROW_ROUTE(app, "/scripts/drug.js")([](){  // json wrangler script
+        auto page = crow::mustache::load_text("scripts/drug.js");
+        return page;
+    });
     
     CROW_ROUTE(app, "/getservice").methods("POST"_method)([](crow::response &res){
         res.set_static_file_info(SOURCE_DIR + std::string("templates/getservice.dat"));
@@ -69,7 +74,7 @@ int main()
     });
 
     CROW_ROUTE(app, "/dev/json")([](){  // json template
-        auto page = crow::mustache::load_text("template.json");
+        auto page = crow::mustache::load_text("sample.json");
         return page;
     });
 
