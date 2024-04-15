@@ -12,7 +12,7 @@ public:
     for (int i = 0; i < num; i++) {
       graph[i] = new bool[num];
       for (int j = 0; j < num; j++)
-        graph[i][j] = "";
+        graph[i][j] = NULL;
   }
     }
     void addEdge(std::string from, std::string to, std::string interType);
