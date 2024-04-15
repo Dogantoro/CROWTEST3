@@ -18,5 +18,5 @@ target_link_libraries(rx-server PUBLIC
   Boost::regex
   Boost::container
 )
-message(DEBUG "debug test")
-message(Boost_INCLUDE_DIRS="${Boost_INCLUDE_DIRS}")
+
+target_compile_options(rx-server PRIVATE "/wd4566")
