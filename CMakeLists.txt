@@ -8,7 +8,9 @@ project(
 add_definitions( -DSOURCE_DIR="${PROJECT_SOURCE_DIR}" )
 
 find_package( Boost 1.82.0 REQUIRED COMPONENTS system thread regex container)
-ADD_EXECUTABLE( rx-server src/server.cpp src/json-mgr.h)
+
+ADD_EXECUTABLE( rx-server src/server.cpp)
+
 target_include_directories(rx-server PRIVATE ${Boost_INCLUDE_DIRS})
 target_link_libraries(rx-server PUBLIC
   Boost::system
