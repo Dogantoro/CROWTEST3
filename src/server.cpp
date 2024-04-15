@@ -8,6 +8,12 @@
 
 int main()
 {
+    AdjList al;
+    AdjList* alPtr = &al;
+    processCSVs(alPtr);
+    std::cout << alPtr->getSize() << std::endl;
+
+
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
 

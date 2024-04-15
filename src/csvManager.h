@@ -3,6 +3,7 @@
 #include <iostream> 
 #include <string>
 #include "AdjList.h"
+#include "AdjMatrix.h"
 
 void processCSVs(AdjList* graph){
 
