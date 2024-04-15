@@ -8,6 +8,12 @@
 
 int main()
 {
+    AdjList al;
+    AdjList* alPtr = &al;
+    processCSVs(alPtr);
+    std::cout << alPtr->getSize() << std::endl;
+
+
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
 
@@ -33,7 +39,7 @@ int main()
     });
     
     CROW_ROUTE(app, "/getservice").methods("POST"_method)([](crow::response &res){
-        res.set_static_file_info(SOURCE_DIR + std::string("templates/getservice.dat"));
+        res.set_static_file_info_unsafe(SOURCE_DIR + std::string("/templates/getservice.dat"));
         res.set_header("content-type", "image/jpeg");
         res.end();
     });
