@@ -19,23 +19,29 @@ int main()
 
     // load files at specified directories
     CROW_ROUTE(app, "/")([](){  // homepage
-        auto page = crow::mustache::load_text("index.html");
-        return page;
+        auto page = crow::mustache::load("index.html");
+        return page.render();
     });
 
     CROW_ROUTE(app, "/css/style.css")([](){  // css file
         auto page = crow::mustache::load_text("css/style.css");
-        return page;
+        auto response = crow::response{page};
+        response.set_header("content-type", "text/css");
+        return response;
     });
 
     CROW_ROUTE(app, "/scripts/nav.js")([](){  // navbar script
         auto page = crow::mustache::load_text("scripts/nav.js");
-        return page;
+        auto response = crow::response{page};
+        response.set_header("content-type", "text/javascript");
+        return response;
     });
 
     CROW_ROUTE(app, "/scripts/drug.js")([](){  // json wrangler script
         auto page = crow::mustache::load_text("scripts/drug.js");
-        return page;
+        auto response = crow::response{page};
+        response.set_header("content-type", "text/javascript");
+        return response;
     });
     
     CROW_ROUTE(app, "/getservice").methods("POST"_method)([](crow::response &res){
