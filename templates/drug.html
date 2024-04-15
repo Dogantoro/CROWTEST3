@@ -13,7 +13,8 @@
   
   <body>
     <script src="/scripts/nav.js"></script>
-    
+    <script src="/scripts/drug.js"></script>
+
     <div class="container-xxl  text-center mt-4">
       
       <div class= "row gx-4 ">
@@ -39,17 +40,69 @@
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#major" aria-expanded="false" aria-controls="collapseExample">
                         <h3>major</h3>
                       </button>
-                    <div class="collapse" id="major">
+                    <div class="collapse text-start" id="major">
                         <ul class="list-unstyled">
-                          <li>
+                          <li class="drug-bullet">
                             <i class="bi bi-capsule"></i> drug 1
                           </li>
-                          <li>drug 2</li>
+                          <li class="drug-bullet">
+                            <i class="bi bi-capsule"></i> drug 2
+                          </li>
                         </ul>
                     </div>
                     <hr class="drug-label border-3">
-                  
                   </div>
+
+                  <div class="accordion-item">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#moderate" aria-expanded="false" aria-controls="collapseExample">
+                        <h3>moderate</h3>
+                      </button>
+                    <div class="collapse text-start" id="moderate">
+                        <ul class="list-unstyled">
+                          <li class="drug-bullet">
+                            <i class="bi bi-capsule"></i> drug 1
+                          </li>
+                          <li class="drug-bullet">
+                            <i class="bi bi-capsule"></i> drug 2
+                          </li>
+                        </ul>
+                    </div>
+                    <hr class="drug-label border-3">
+                  </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#minor" aria-expanded="false" aria-controls="collapseExample">
+                      <h3>minor</h3>
+                    </button>
+                  <div class="collapse text-start" id="minor">
+                      <ul class="list-unstyled">
+                        <li class="drug-bullet">
+                          <i class="bi bi-capsule"></i> drug 1
+                        </li>
+                        <li class="drug-bullet">
+                          <i class="bi bi-capsule"></i> drug 2
+                        </li>
+                      </ul>
+                  </div>
+                  <hr class="drug-label border-3">
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#unknown" aria-expanded="false" aria-controls="collapseExample">
+                      <h3>unknown</h3>
+                    </button>
+                  <div class="collapse text-start" id="unknown">
+                      <ul class="list-unstyled">
+                        <li class="drug-bullet">
+                          <i class="bi bi-capsule"></i> drug 1
+                        </li>
+                        <li class="drug-bullet">
+                          <i class="bi bi-capsule"></i> drug 2
+                        </li>
+                      </ul>
+                  </div>
+                  <hr class="drug-label border-3">
+                </div>
                 
                 </div>
               </div>

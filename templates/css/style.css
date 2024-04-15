@@ -69,17 +69,21 @@ hr.drug-label {
 	opacity: 100%;
 }
 
-.accordion-button{
+.accordion-button {
 	padding: 4px;
 	margin-top: 1rem;
 }
 
-.accordion-button:not(.collapsed){
+.accordion-button:not(.collapsed) {
 	background-color: #FFF;
 	box-shadow: none;
 }
 
-.accordion-button:focus{
+.accordion-button:focus {
 	box-shadow: none;
 }
 
+li.drug-bullet {
+	font-size: calc(0.25em + 1vw);
+	margin-left: 6px;
+}
