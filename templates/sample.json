@@ -1,21 +1,13 @@
 {
     "drugName": "Drug Name",
-    "activeIngredients": "Ingredient Name",
+    "activeIngredients": "Active ingredients here",
     "brandNames": ["brand name 1", "brand name 2"],
     "generics": ["generic 1", "generic 2"],
 
     "interactions": {
-        "major": [
-            {"name": "other drug", "type": "interaction type"}
-        ],
-        "moderate": [
-            {"name": "other drug", "type": "interaction type"}
-        ],
-        "minor": [
-            {"name": "other drug", "type": "interaction type"}
-        ],
-        "unknown": [
-            {"name": "other drug", "type": "interaction type"}
-        ]
+        "major": ["major drug 1", "major drug 2"],
+        "moderate": ["moderate drug 1", "moderate drug 2"],
+        "minor": ["minor drug 1", "minor drug 2"],
+        "unknown": ["unknown drug 1", "unknown drug 2"]
     }
 }

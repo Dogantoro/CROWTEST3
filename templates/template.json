@@ -5,17 +5,9 @@
     "generics": [""],
 
     "interactions": {
-        "major": [
-            {"name": "", "type": ""}
-        ],
-        "moderate": [
-            {"name": "", "type": ""}
-        ],
-        "minor": [
-            {"name": "", "type": ""}
-        ],
-        "unknown": [
-            {"name": "", "type": ""}
-        ]
+        "major": [""],
+        "moderate": [""],
+        "minor": [""],
+        "unknown": [""]
     }
 }
