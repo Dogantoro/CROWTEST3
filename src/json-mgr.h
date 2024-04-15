@@ -8,7 +8,8 @@ enum class InteractionSeverity {
     UNKNOWN,
     MODERATE,
     MINOR,
-    MAJOR
+    MAJOR,
+    NONE
 };
 
 struct InteractionDesc {
@@ -26,10 +27,11 @@ struct DrugInfo {
 
 // your code slays Milana 
 InteractionSeverity convert(std::string inter) {
-    if(inter == "Unknown") return InteractionSeverity::UNKNOWN;
-    else if(inter == "Moderate") return InteractionSeverity::MODERATE;
+    if(inter == "Moderate") return InteractionSeverity::MODERATE;
     else if(inter == "Minor") return InteractionSeverity::MINOR;
     else if(inter == "Major") return InteractionSeverity::MAJOR;
+    else if(inter == "Unknown") return InteractionSeverity::UNKNOWN;
+    else return InteractionSeverity::NONE;
 }
 
 boost::json::array jsonize(const std::vector<std::string>& vec) {

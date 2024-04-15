@@ -4,7 +4,7 @@
 
 class AdjMatrix {
 private:
-    std::string** graph;
+    bool** graph;
     std::map<std::string, int> mapper;
 public:
     AdjMatrix(int num) {
@@ -12,7 +12,7 @@ public:
     for (int i = 0; i < num; i++) {
       graph[i] = new bool[num];
       for (int j = 0; j < num; j++)
-        graph[i][j] = NULL;
+        graph[i][j] = false;
   }
     }
     void addEdge(std::string from, std::string to, std::string interType);
@@ -24,5 +24,5 @@ void AdjMatrix::addEdge(std::string from, std::string to, std::string interType)
         mapper[from] = index++;
     if (mapper.find(to) == mapper.end())
         mapper[to] = index++;
-    graph[mapper[from]][mapper[to]] = convert(interType);
+    graph[mapper[from]][mapper[to]] = true;
 }

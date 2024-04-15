@@ -9,7 +9,9 @@ private:
 
 public:
     void addEdge(std::string from, std::string to, std::string interType);
-
+    int getSize() {
+        return (int)(graph.size());
+    }
 };
 
 void AdjList::addEdge(std::string from, std::string to, std::string interType){
