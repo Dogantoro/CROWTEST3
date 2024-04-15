@@ -8,8 +8,7 @@
 
 int main()
 {
-    AdjList al;
-    AdjList* alPtr = &al;
+    AdjList* alPtr = new AdjList();
     processCSVs(alPtr);
     std::cout << alPtr->getSize() << std::endl;
 
