@@ -1,13 +1,14 @@
+// Copyright 2024 Dogan Torosdagli, Emma Coronado, Milana Tratsevska
+
+#include <string>
 #include "../include/crow.h"
 #include <boost/algorithm/string.hpp>
 #include <boost/url/src.hpp>
 #include <boost/url/grammar/alnum_chars.hpp>
-#include <string>
-#include "csvManager.h"
-#include "json-mgr.h"
+#include "./csvManager.h"
+#include "./json-mgr.h"
 
-int main()
-{
+int main() {
     AdjList* alPtr = new AdjList();
     processCSVs(alPtr);
     std::cout << alPtr->getSize() << std::endl;
@@ -16,79 +17,91 @@ int main()
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
 
-    // load files at specified directories
-    CROW_ROUTE(app, "/")([](){  // homepage
+    // Routes for files and APIs
+
+    // Homepage
+    CROW_ROUTE(app, "/")([](){
         auto page = crow::mustache::load("index.html");
         return page.render();
     });
 
-    CROW_ROUTE(app, "/css/style.css")([](){  // css file
+    // CSS file
+    CROW_ROUTE(app, "/css/style.css")([](){
         auto page = crow::mustache::load_text("css/style.css");
         auto response = crow::response{page};
         response.set_header("content-type", "text/css");
         return response;
     });
 
-    CROW_ROUTE(app, "/scripts/nav.js")([](){  // navbar script
+    // navbar JS
+    CROW_ROUTE(app, "/scripts/nav.js")([](){
         auto page = crow::mustache::load_text("scripts/nav.js");
         auto response = crow::response{page};
         response.set_header("content-type", "text/javascript");
         return response;
     });
 
-    CROW_ROUTE(app, "/scripts/drug.js")([](){  // json wrangler script
+    // json wrangler JS
+    CROW_ROUTE(app, "/scripts/drug.js")([](){
         auto page = crow::mustache::load_text("scripts/drug.js");
         auto response = crow::response{page};
         response.set_header("content-type", "text/javascript");
         return response;
     });
-    
+
+    // Testing for SSL
     CROW_ROUTE(app, "/getservice").methods("POST"_method)([](crow::response &res){
         res.set_static_file_info_unsafe(SOURCE_DIR + std::string("/templates/getservice.dat"));
         res.set_header("content-type", "image/jpeg");
         res.end();
     });
 
+    // Incorrectly Accessed Testing
     CROW_ROUTE(app, "/getservice")([](){
         return "You're Not Supposed To Be Here!";
     });
 
+    // Drug POST redirect to correct page via GET -- keeps URL clean while allowing pages to be bookmarked
     CROW_ROUTE(app, "/drug").methods("POST"_method)([](const crow::request& req, crow::response &res) {
         auto x = req.get_body_params();
         auto y = x.get("DrugName");
         if (!y) {
             res.redirect("/");
             res.end();
-            return;
+            return;  // invalid data from the form results in redirect to homepage
         }
         auto z = std::string(y);
         if (z == "\u0061\u006D\u0061\u006E") {
             res.redirect("/getservice");
-            res.end();
+            res.end();  // SSL Testing redirect
+            return;
         }
         auto w = boost::urls::encode(z, boost::urls::unreserved_chars);
         res.redirect("/drug/" + w);
-        res.end();
+        res.end();  // redirect to drug data page
     });
 
+    // Drug redirect page accessed with GET, redirect to main
+    // This will likely only happen when user attempts to go back through the drug data page
     CROW_ROUTE(app, "/drug").methods("GET"_method)([](const crow::request& req, crow::response &res) {
         res.redirect("/");
         res.end();
     });
 
-    CROW_ROUTE(app, "/drug/<string>").methods("POST"_method, "GET"_method)([](std::string a) {  // drug page
+    // Drug data page through GET, allows bookmarking and keeps URL clean
+    CROW_ROUTE(app, "/drug/<string>").methods("POST"_method, "GET"_method)([](std::string a) {
         boost::urls::pct_string_view decoded(a);
         auto txt = decoded.decode();
         auto page = crow::mustache::load("drug.html");
-        crow::mustache::context ctx ({{"DrugName", txt}});
+        crow::mustache::context ctx({{"DrugName", txt}});
         return page.render(ctx);
     });
 
-    CROW_ROUTE(app, "/dev/json")([](){  // json template
+    // JSON template for testing
+    CROW_ROUTE(app, "/dev/json")([](){
         auto page = crow::mustache::load_text("sample.json");
         return page;
     });
 
-    //set the port, set the app to run on multiple threads, and run the app
     app.port(18080).multithreaded().run();
 }
