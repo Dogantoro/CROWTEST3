@@ -12,9 +12,8 @@ int main()
 {
     AdjList* al = new AdjList();
     processCSVs(al);
-    AdjList* am = new AdjMatrix();
+    AdjMatrix* am = new AdjMatrix();
     processCSVs(am);
-
 
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
