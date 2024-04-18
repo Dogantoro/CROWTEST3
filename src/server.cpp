@@ -12,7 +12,7 @@ int main()
 {
     AdjList* al = new AdjList();
     processCSVs(al);
-    AdjList* am = new AdjMatrix();
+    AdjMatrix* am = new AdjMatrix();
     processCSVs(am);
 
 
@@ -27,17 +27,12 @@ int main()
         return page.render();
     });
 
-<<<<<<< HEAD
     CROW_ROUTE(app, "/about")([](){  // homepage
         auto page = crow::mustache::load_text("about.html");
         return page;
     });
 
     CROW_ROUTE(app, "/css/style.css")([](){  // css file
-=======
-    // CSS file
-    CROW_ROUTE(app, "/css/style.css")([](){
->>>>>>> 9d586d098c175bd65e28c72dbbf31437d191f270
         auto page = crow::mustache::load_text("css/style.css");
         auto response = crow::response{page};
         response.set_header("content-type", "text/css");
