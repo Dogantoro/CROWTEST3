@@ -26,8 +26,12 @@ int main()
         return page.render();
     });
 
-    // CSS file
-    CROW_ROUTE(app, "/css/style.css")([](){
+    CROW_ROUTE(app, "/about")([](){  // homepage
+        auto page = crow::mustache::load_text("about.html");
+        return page;
+    });
+
+    CROW_ROUTE(app, "/css/style.css")([](){  // css file
         auto page = crow::mustache::load_text("css/style.css");
         auto response = crow::response{page};
         response.set_header("content-type", "text/css");
