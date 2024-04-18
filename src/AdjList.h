@@ -12,6 +12,9 @@ public:
     int getSize() {
         return (int)(graph.size());
     }
+    std::vector<InteractionDesc> getInteractions(std::string drug) {
+        return graph[drug].DrugInfo::interactions;
+    }
 };
 
 void AdjList::addEdge(std::string from, std::string to, std::string interType){
@@ -25,3 +28,4 @@ void AdjList::addEdge(std::string from, std::string to, std::string interType){
     graph[from].DrugInfo::interactions.push_back(inter1);
     graph[to].DrugInfo::interactions.push_back(inter2);
 }
+
