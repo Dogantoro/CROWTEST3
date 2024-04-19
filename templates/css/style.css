@@ -1,26 +1,16 @@
+/* icon library */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Koulen&display=swap');
+
 
 body {
 	background-color: #F00;
 }
 
-h2 {
-	color: #000;
-	font-family: Inter;
-	font-style: normal;
-	font-weight: 1000;
-	font-size: calc(0.5em + 2vw);
-
-}
-
-h3 {
-	color: #000;
-	font-family: Inter;
-	font-style: normal;
-	font-weight: 1000;
-	font-size: calc(0.4em + 1.3vw);
-	margin-bottom: 0;
-}
+/* nav bar */
 
 .nav-title {
 	color: #FFF;
@@ -39,10 +29,6 @@ h3 {
 	filter: blur(0.4px);
 }
 
-.search-bar {
-	border-radius: 50px;
-}
-
 .pill-bottle {
 	width: 50px;
 	height: 50px;
@@ -50,6 +36,40 @@ h3 {
 	filter: blur(0.4px);
 }
 
+/* homepage */
+
+h1.display-1 {
+	color: #000;
+	font-family: inter;
+	text-align: center;
+	font-weight: 425;
+	letter-spacing: -3px;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar {
+	border-radius: 50px;
+}
+
+/* drug page */
+
+h2 {
+	color: #000;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 1000;
+	font-size: calc(0.5em + 2vw);
+
+}
+
+h3 {
+	color: #000;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 1000;
+	font-size: calc(0.4em + 1.3vw);
+	margin-bottom: 0;
+}
 
 .drug-card{
 	border-radius: 30px;
