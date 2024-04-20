@@ -32,11 +32,8 @@ std::vector<InteractionDesc> AdjMatrix::getInteractions(std::string drug) {
     int y = mapper[drug];
     std::vector<InteractionDesc> ints;
     for (int i = 0; i < getSize(); i++) {
-        if (!graph[y][i].empty()) { // so it doesnt add things with no interactions
-            InteractionDesc inter = {reverseMapper[i], graph[y][i]};
-            ints.push_back(inter);
-        }
-        
+        InteractionDesc inter = {reverseMapper[i], graph[y][i]};
+        ints.push_back(inter);
     }
             
     return ints;
