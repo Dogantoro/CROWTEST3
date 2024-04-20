@@ -22,6 +22,7 @@ struct DrugInfo {
     std::string ingredients;
     std::vector<std::string> brandNames;
     std::vector<std::string> Generics;
+    // might have to separate this from drugInfo to be compatible with both adjList and adjMatrix
     std::vector<InteractionDesc> interactions;
 };
 
