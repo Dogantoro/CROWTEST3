@@ -15,6 +15,7 @@ int main()
     AdjMatrix* am = new AdjMatrix();
     processCSVs(am);
     
+    
 
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
@@ -116,10 +117,12 @@ int main()
             response.set_header("content-type", "application/json");
             return response;
         }
-        if (al->ifDrug(drugName))
-        {auto drugJson = DrugSerializer(al->getDrugInfo(drugName));
-        auto response = crow::response{drugJson};
-        return response;
+        std::string dn = drugName;
+        al->convertName(dn);
+        if (al->ifDrug((dn))) {
+            auto drugJson = DrugSerializer(al->getDrugInfo(dn));
+            auto response = crow::response{drugJson};
+            return response;
         }
     });
 

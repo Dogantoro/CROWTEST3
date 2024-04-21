@@ -1,6 +1,7 @@
 #pragma once
 #include "json-mgr.h"
 #include <unordered_map>
+#include <cctype>
 
 class AdjList {
 private:
@@ -12,8 +13,8 @@ public:
     int getSize() {
         return (int)(graph.size());
     }
-    std::vector<InteractionDesc> getInteractions(std::string drug) {
-        return graph[drug].DrugInfo::interactions;
+    std::vector<InteractionDesc> getInteractions(DrugInfo drug) {
+        return drug.DrugInfo::interactions;
     }
 
     bool ifDrug(std::string drug) {
@@ -21,6 +22,14 @@ public:
     }
     DrugInfo getDrugInfo(std::string drug) {
             return graph[drug];
+    }
+    // name should have first letter be capitalized and rest should not be
+    void convertName(std::string &name) {
+        if (name.empty())
+            return;
+        name[0] = std::toupper(name[0]);
+        for (size_t i = 1; i < name.size(); ++i)
+            name[i] = std::tolower(name[i]);
     }
 };
 
