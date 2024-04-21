@@ -131,7 +131,8 @@ int main()
             response.set_header("content-type", "application/json");
             return response;
         }
-        std::string dn = drugName;
+        boost::urls::pct_string_view decoded(drugName);
+        auto dn = decoded.decode();
         al->convertName(dn);
         auto drugJson = DrugSerializer(al->getDrugInfo(dn));
         auto response = crow::response{drugJson};
