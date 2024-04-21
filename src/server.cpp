@@ -108,15 +108,15 @@ int main()
         return page;
     });
 
-    CROW_ROUTE(app, "/api")([](const crow::request& req){
+    CROW_ROUTE(app, "/api")([&al](const crow::request& req){
         auto drugName = req.url_params.get("drugName");
         if (!drugName) {
             auto response = crow::response{"{}"};
             response.set_header("content-type", "application/json");
             return response;
         }
-        auto placeholder = "INSERT JSON STRING FILE HERE";
-        auto response = crow::response{placeholder};
+        auto drugJson = DrugSerializer(al->getDrugInfo(drugName));
+        auto response = crow::response{drugJson};
         return response;
     });
 
