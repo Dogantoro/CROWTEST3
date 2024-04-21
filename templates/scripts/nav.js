@@ -1,3 +1,4 @@
+// nav bar code in string form
 const nav = `
 <nav class="navbar navbar-expand-lg pt-1" data-bs-theme="dark">
   <div class="container-fluid ">
@@ -36,12 +37,10 @@ const nav = `
   
   </div>
 </nav>    
-
 `;
 
-
-function insertNav() {
+function insertNav() {  // inserts nav bar code into html file when inserted via script tag
 	document.body.insertAdjacentHTML("afterbegin", nav);
 }
 
-insertNav();
+insertNav();  // calls function
