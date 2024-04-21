@@ -22,7 +22,7 @@ int main()
     // Routes for files and APIs
 
     // Homepage
-    CROW_ROUTE(app, "/")([](){
+    CROW_ROUTE(app, "/").methods("POST"_method, "GET"_method)([](){
         auto page = crow::mustache::load("index.html");
         return page.render();
     });
@@ -68,7 +68,7 @@ int main()
     });
 
     // Drug POST redirect to correct page via GET -- keeps URL clean while allowing pages to be bookmarked
-    CROW_ROUTE(app, "/drug").methods("POST"_method)([](const crow::request& req, crow::response &res) {
+    CROW_ROUTE(app, "/drug").methods("POST"_method)([&al](const crow::request& req, crow::response &res) {
         auto x = req.get_body_params();
         auto y = x.get("DrugName");
         if (!y) {
@@ -80,6 +80,11 @@ int main()
         if (z == "\u0061\u006D\u0061\u006E") {
             res.redirect("/getservice");
             res.end();  // SSL Testing redirect
+            return;
+        }
+        if (!al->ifDrug(z)) {
+            res.redirect("/?error");
+            res.end();
             return;
         }
         auto w = boost::urls::encode(z, boost::urls::unreserved_chars);
@@ -116,11 +121,9 @@ int main()
             response.set_header("content-type", "application/json");
             return response;
         }
-        if (al->ifDrug(drugName))
-        {auto drugJson = DrugSerializer(al->getDrugInfo(drugName));
+        auto drugJson = DrugSerializer(al->getDrugInfo(drugName));
         auto response = crow::response{drugJson};
         return response;
-        }
     });
 
     app.port(18080).multithreaded().run();
