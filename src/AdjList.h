@@ -15,6 +15,9 @@ public:
     std::vector<InteractionDesc> getInteractions(std::string drug) {
         return graph[drug].DrugInfo::interactions;
     }
+    DrugInfo getDrugInfo(std::string drug) {
+        return graph[drug];
+    }
 };
 
 void AdjList::addEdge(std::string from, std::string to, std::string interType){

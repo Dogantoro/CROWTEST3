@@ -25,7 +25,6 @@ struct DrugInfo {
     std::vector<InteractionDesc> interactions;
 };
 
-// your code slays Milana 
 InteractionSeverity convert(std::string inter) {
     if(inter == "Moderate") return InteractionSeverity::MODERATE;
     else if(inter == "Minor") return InteractionSeverity::MINOR;
@@ -81,3 +80,4 @@ std::string DrugSerializer(const DrugInfo drug, const std::vector<InteractionDes
 
     return boost::json::serialize(response);
 }
+
