@@ -29,7 +29,7 @@ void processCSVs(AdjList* graph){
             getline(inFile, drug1, ',');
             getline(inFile, temp, ',');
             getline(inFile, drug2, ',');
-            getline(inFile, interLevel, ',');
+            getline(inFile, interLevel);
             graph->addEdge(drug1, drug2, interLevel); 
         }
         
