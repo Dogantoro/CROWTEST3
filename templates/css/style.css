@@ -49,6 +49,11 @@ h1.display-1 {
 
 .search-bar {
 	border-radius: 50px;
+	border-color: #000;
+}
+
+.search-button {
+	border-radius: 25%;
 }
 
 /* drug page */
