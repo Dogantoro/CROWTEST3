@@ -20,7 +20,6 @@ public:
         return graph.find(drug) != graph.end();
     }
     DrugInfo getDrugInfo(std::string drug) {
-          if (ifDrug(drug))
             return graph[drug];
     }
 };
