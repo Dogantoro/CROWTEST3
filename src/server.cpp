@@ -123,8 +123,9 @@ int main()
             response.set_header("content-type", "application/json");
             return response;
         }
-        al->convertName(drugName);
-        auto drugJson = DrugSerializer(al->getDrugInfo(drugName));
+        std::string dn = drugName;
+        al->convertName(dn);
+        auto drugJson = DrugSerializer(al->getDrugInfo(dn));
         auto response = crow::response{drugJson};
         return response;
     });
