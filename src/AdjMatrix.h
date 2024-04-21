@@ -5,32 +5,38 @@
 #include "json-mgr.h"
 
 class AdjMatrix {
- private:
-    InteractionSeverity graph[8008][8008];
+private:
+    InteractionSeverity graph[8009][8009];
     std::unordered_map<std::string, int> mapper;
- public:
+    std::string reverseMapper[8009];
+public:
     void addEdge(std::string from, std::string to, std::string interType);
-    int getSize() {  // just amount of drugs in graph
-        return static_cast<int>(sizeof(graph[0])/sizeof(graph[0][0]));
+    int getSize(){ //just amount of drugs in graph
+        return 8009;
     }
-    std::vector<InteractionSeverity> getInteractions(std::string drug);
+    std::vector<InteractionDesc> getInteractions(std::string drug);
 };
 
 void AdjMatrix::addEdge(std::string from, std::string to, std::string interType) {
     int index = 0;
-    if (mapper.find(from) == mapper.end())
+    if (mapper.find(from) == mapper.end()) {
         mapper[from] = index++;
-    if (mapper.find(to) == mapper.end())
+        reverseMapper[index] = from;
+    }
+    if (mapper.find(to) == mapper.end()) {
         mapper[to] = index++;
+        reverseMapper[index] = to;
+    }
     graph[mapper[from]][mapper[to]] = convert(interType);
 }
 
-std::vector<InteractionSeverity> AdjMatrix::getInteractions(std::string drug) {
-    // need to get name of other drug but im struggling
+std::vector<InteractionDesc> AdjMatrix::getInteractions(std::string drug) {
     int y = mapper[drug];
-    // auto it = mapper.begin();
-    std::vector<InteractionSeverity> ints;
-    for (auto i : graph[y])
-        ints.push_back(i);
+    std::vector<InteractionDesc> ints;
+    for (int i = 0; i < getSize(); i++) {
+        InteractionDesc inter = {reverseMapper[i], graph[y][i]};
+        ints.push_back(inter);
+    }
+            
     return ints;
 }
