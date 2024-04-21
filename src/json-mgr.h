@@ -4,6 +4,7 @@
 #include <vector>
 #include <boost/json/src.hpp>
 
+// Enum of levels of drug interactions
 enum class InteractionSeverity {
     UNKNOWN,
     MODERATE,
@@ -12,11 +13,13 @@ enum class InteractionSeverity {
     NONE
 };
 
+// Record of a single drug interaction
 struct InteractionDesc {
     std::string name;
     InteractionSeverity severity;
 };
 
+// Complete drug information
 struct DrugInfo {
     std::string name;
     std::string ingredients;
@@ -25,15 +28,16 @@ struct DrugInfo {
     std::vector<InteractionDesc> interactions;
 };
 
-// your code slays Milana 
+// converts string to correct interaction severity enum
 InteractionSeverity convert(std::string inter) {
-    if(inter == "Moderate") return InteractionSeverity::MODERATE;
-    else if(inter == "Minor") return InteractionSeverity::MINOR;
-    else if(inter == "Major") return InteractionSeverity::MAJOR;
-    else if(inter == "Unknown") return InteractionSeverity::UNKNOWN;
-    else return InteractionSeverity::NONE;
+    if (inter == "Moderate")    return InteractionSeverity::MODERATE;
+    if (inter == "Minor")       return InteractionSeverity::MINOR;
+    if (inter == "Major")       return InteractionSeverity::MAJOR;
+    if (inter == "Unknown")     return InteractionSeverity::UNKNOWN;
+    return InteractionSeverity::NONE;
 }
 
+// converts a C++ string vector into a JSON string array
 boost::json::array jsonize(const std::vector<std::string>& vec) {
     boost::json::array arr;
     for (const auto& str : vec) {
@@ -42,13 +46,16 @@ boost::json::array jsonize(const std::vector<std::string>& vec) {
     return arr;
 }
 
+// converts a single interactions into a json object
 boost::json::object jsonize(const InteractionDesc interaction) {
     boost::json::object obj;
     obj["name"] = interaction.name;
     return obj;
 }
 
-std::string DrugSerializer(const DrugInfo drug, const std::vector<InteractionDesc> &interactionList) {
+// Converts Drug + List of its interactions into a single JSON file
+std::string DrugSerializer(const DrugInfo drug) {
+    std::vector<InteractionDesc> interactionList = drug.interactions;
     boost::json::object response;
     response["drugName"] = drug.name;
     response["ingredients"] = drug.ingredients;

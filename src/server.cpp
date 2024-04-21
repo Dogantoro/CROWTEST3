@@ -108,5 +108,15 @@ int main()
         return page;
     });
 
+    CROW_ROUTE(app, "/api")([](const crow::request& req){
+        auto drugName = req.url_params.get("drugName");
+        if (!drugName) {
+            auto response = crow::response{"{}"};
+            response.set_header("content-type", "application/json");
+            return response;
+        }
+        auto ListOut = al.getInterations();
+    });
+
     app.port(18080).multithreaded().run();
 }
