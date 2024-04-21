@@ -115,7 +115,9 @@ int main()
             response.set_header("content-type", "application/json");
             return response;
         }
-        auto ListOut = al.getInterations();
+        auto placeholder = "INSERT JSON STRING FILE HERE";
+        auto response = crow::response{placeholder};
+        return response;
     });
 
     app.port(18080).multithreaded().run();
