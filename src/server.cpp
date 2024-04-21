@@ -54,6 +54,14 @@ int main()
         return response;
     });
 
+    // improper search alert js
+    CROW_ROUTE(app, "/scripts/index.js")([](){
+        auto page = crow::mustache::load_text("scripts/index.js");
+        auto response = crow::response{page};
+        response.set_header("content-type", "text/javascript");
+        return response;
+    });
+
     // Testing for SSL
     CROW_ROUTE(app, "/getservice").methods("POST"_method)([](crow::response &res){
         res.set_static_file_info_unsafe(SOURCE_DIR + std::string("/templates/getservice.dat"));

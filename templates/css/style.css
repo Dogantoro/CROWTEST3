@@ -50,10 +50,16 @@ h1.display-1 {
 .search-bar {
 	border-radius: 50px;
 	border-color: #000;
+	border-width: 2px;
 }
 
 .search-button {
 	border-radius: 25%;
+}
+
+.home-card{
+	border-radius: 15px;
+	box-shadow: 4px -4px 4px 0px rgba(0, 0, 0, 0.25), -4px 4px 4px 1px rgba(0, 0, 0, 0.25);
 }
 
 /* drug page */
@@ -77,7 +83,6 @@ h3 {
 }
 
 .drug-card{
-	border-radius: 30px;
 	box-shadow: 4px -4px 4px 0px rgba(0, 0, 0, 0.25), -4px 4px 4px 1px rgba(0, 0, 0, 0.25);
 }
 
