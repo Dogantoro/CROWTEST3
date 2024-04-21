@@ -14,6 +14,8 @@ int main()
     processCSVs(al);
     AdjMatrix* am = new AdjMatrix();
     processCSVs(am);
+    
+    
 
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
@@ -21,7 +23,7 @@ int main()
     // Routes for files and APIs
 
     // Homepage
-    CROW_ROUTE(app, "/")([](){
+    CROW_ROUTE(app, "/").methods("POST"_method, "GET"_method)([](){
         auto page = crow::mustache::load("index.html");
         return page.render();
     });
@@ -75,7 +77,7 @@ int main()
     });
 
     // Drug POST redirect to correct page via GET -- keeps URL clean while allowing pages to be bookmarked
-    CROW_ROUTE(app, "/drug").methods("POST"_method)([](const crow::request& req, crow::response &res) {
+    CROW_ROUTE(app, "/drug").methods("POST"_method)([&al](const crow::request& req, crow::response &res) {
         auto x = req.get_body_params();
         auto y = x.get("DrugName");
         if (!y) {
@@ -87,6 +89,12 @@ int main()
         if (z == "\u0061\u006D\u0061\u006E") {
             res.redirect("/getservice");
             res.end();  // SSL Testing redirect
+            return;
+        }
+        al->convertName(z);
+        if (!al->ifDrug(z)) {
+            res.redirect("/?error");
+            res.end();
             return;
         }
         auto w = boost::urls::encode(z, boost::urls::unreserved_chars);
@@ -123,7 +131,9 @@ int main()
             response.set_header("content-type", "application/json");
             return response;
         }
-        auto drugJson = DrugSerializer(al->getDrugInfo(drugName));
+        std::string dn = drugName;
+        al->convertName(dn);
+        auto drugJson = DrugSerializer(al->getDrugInfo(dn));
         auto response = crow::response{drugJson};
         return response;
     });

@@ -46,13 +46,6 @@ boost::json::array jsonize(const std::vector<std::string>& vec) {
     return arr;
 }
 
-// converts a single interactions into a json object
-boost::json::object jsonize(const InteractionDesc interaction) {
-    boost::json::object obj;
-    obj["name"] = interaction.name;
-    return obj;
-}
-
 // Converts Drug + List of its interactions into a single JSON file
 std::string DrugSerializer(const DrugInfo drug) {
     std::vector<InteractionDesc> interactionList = drug.interactions;
@@ -67,16 +60,16 @@ std::string DrugSerializer(const DrugInfo drug) {
     for (const auto& interaction : interactionList) {
         switch (interaction.severity) {
             case InteractionSeverity::MAJOR:
-                majorList.push_back(jsonize(interaction));
+                majorList.emplace_back(interaction.name);
                 break;
             case InteractionSeverity::MODERATE:
-                moderateList.push_back(jsonize(interaction));
+                moderateList.emplace_back(interaction.name);
                 break;
             case InteractionSeverity::MINOR:
-                minorList.push_back(jsonize(interaction));
+                minorList.emplace_back(interaction.name);
                 break;
-            case InteractionSeverity::UNKNOWN:
-                unknownList.push_back(jsonize(interaction));
+            default:
+                unknownList.emplace_back(interaction.name);
         }
     }
     interactions["major"] = majorList;
