@@ -15,8 +15,13 @@ public:
     std::vector<InteractionDesc> getInteractions(std::string drug) {
         return graph[drug].DrugInfo::interactions;
     }
+
+    bool ifDrug(std::string drug) {
+        return graph.find(drug) != graph.end();
+    }
     DrugInfo getDrugInfo(std::string drug) {
-        return graph[drug];
+          if (ifDrug(drug))
+            return graph[drug];
     }
 };
 

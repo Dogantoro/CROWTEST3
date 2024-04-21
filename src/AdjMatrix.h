@@ -15,6 +15,7 @@ public:
         return 8009;
     }
     std::vector<InteractionDesc> getInteractions(std::string drug);
+    DrugInfo getDrugInfo(std::string drug);
 };
 
 void AdjMatrix::addEdge(std::string from, std::string to, std::string interType) {
@@ -36,7 +37,14 @@ std::vector<InteractionDesc> AdjMatrix::getInteractions(std::string drug) {
     for (int i = 0; i < getSize(); i++) {
         InteractionDesc inter = {reverseMapper[i], graph[y][i]};
         ints.push_back(inter);
-    }
-            
+    }    
     return ints;
+}
+
+DrugInfo AdjMatrix::getDrugInfo(std::string drug) {
+    auto ints = getInteractions(drug);
+    DrugInfo di;
+    di.name = drug;
+    di.DrugInfo::interactions = ints;
+    return di;
 }
