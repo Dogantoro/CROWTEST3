@@ -48,3 +48,6 @@ insertNav();  // calls function
 if(document.cookie == "dataStruct=matrix") {
 	document.body.style.backgroundColor = "#0d6efd";
 }
+else {
+	document.body.style.backgroundColor = "#f00";
+}

@@ -6,11 +6,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Koulen&display=swap');
 
 
-body {
-	background-color:#f00;
-}
-
-
 /* nav bar */
 
 .nav-title {
@@ -67,7 +62,7 @@ h2.dd-heading {
 	border-radius: 25%;
 }
 
-.home-card{
+.home-card {
 	border-radius: 15px;
 	box-shadow: 4px -4px 4px 0px rgba(0, 0, 0, 0.25), -4px 4px 4px 1px rgba(0, 0, 0, 0.25);
 }
