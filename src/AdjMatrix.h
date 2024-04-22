@@ -28,6 +28,8 @@ public:
 };
 
 void AdjMatrix::addEdge(std::string from, std::string to, std::string interType) {
+    from = convertName(from);
+    to = convertName(to);
     int index = 0;
     if (mapper.find(from) == mapper.end()) {
         mapper[from] = index++;
@@ -53,7 +55,7 @@ std::set<InteractionDesc> AdjMatrix::getInteractions(std::string drug) {
 DrugInfo AdjMatrix::getDrugInfo(std::string drug) {
     auto ints = getInteractions(drug);
     DrugInfo di;
-    di.name = drug;
+    di.name = convertName(drug);
     di.DrugInfo::interactions = ints;
     return di;
 }

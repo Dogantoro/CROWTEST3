@@ -1,5 +1,6 @@
 // Copyright 2024 Dogan Torosdagli, Emma Coronado, Milana Tratsevska
 
+#include <iostream>
 #include <string>
 #include "../include/crow.h"
 #include <boost/algorithm/string.hpp>
@@ -8,14 +9,16 @@
 #include "./csvManager.h"
 #include "./json-mgr.h"
 
-int main()
-{
+int main() {
+    std::cout << "Starting rx-warning server!\nLoading CSVs for Adjacency List";
+    std::cout.flush();
     AdjList* al = new AdjList();
     processCSVs(al);
+    std::cout << "\nLoading CSVs for Adjacency Matrix";
+    std::cout.flush();
     AdjMatrix* am = new AdjMatrix();
     processCSVs(am);
-    
-    
+    std::cout << "\nServer Started" << std::endl;
 
     crow::SimpleApp app;
     crow::mustache::set_global_base(SOURCE_DIR + std::string("/templates"));
@@ -91,7 +94,7 @@ int main()
             res.end();  // SSL Testing redirect
             return;
         }
-        convertName(z);
+        z = convertName(z);
         if (!al->drugExists(z)) {
             res.redirect("/?error");
             res.end();
@@ -133,7 +136,7 @@ int main()
         }
         boost::urls::pct_string_view decoded(drugName);
         auto dn = decoded.decode();
-        convertName(dn);
+        dn = convertName(dn);
         auto drugJson = DrugSerializer(al->getDrugInfo(dn));
         auto response = crow::response{drugJson};
         return response;
