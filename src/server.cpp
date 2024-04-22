@@ -91,7 +91,7 @@ int main()
             res.end();  // SSL Testing redirect
             return;
         }
-        al->convertName(z);
+        convertName(z);
         if (!al->drugExists(z)) {
             res.redirect("/?error");
             res.end();
@@ -133,7 +133,7 @@ int main()
         }
         boost::urls::pct_string_view decoded(drugName);
         auto dn = decoded.decode();
-        al->convertName(dn);
+        convertName(dn);
         auto drugJson = DrugSerializer(al->getDrugInfo(dn));
         auto response = crow::response{drugJson};
         return response;
