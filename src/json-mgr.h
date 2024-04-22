@@ -28,9 +28,6 @@ struct InteractionDesc {
 // Complete drug information
 struct DrugInfo {
     std::string name;
-    std::string ingredients;
-    std::vector<std::string> brandNames;
-    std::vector<std::string> Generics;
     std::set<InteractionDesc> interactions;
 };
 
@@ -67,10 +64,6 @@ std::string DrugSerializer(const DrugInfo drug) {
     std::set<InteractionDesc> interactionList = drug.interactions;
     boost::json::object response;
     response["drugName"] = drug.name;
-    response["ingredients"] = drug.ingredients;
-    response["brandNames"] = jsonize(drug.brandNames);
-    response["generics"] = jsonize(drug.Generics);
-
     boost::json::object interactions;
     boost::json::array majorList, moderateList, minorList, unknownList;
     for (const auto& interaction : interactionList) {
