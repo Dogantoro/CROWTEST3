@@ -101,12 +101,6 @@ int main() {
             return;
         }
         auto w = boost::urls::encode(z, boost::urls::unreserved_chars);
-        auto dataStructure = std::string(x.get("SearchRadio"));
-        if (dataStructure != "list" || dataStructure == "matrix") {
-            res.redirect("/?error");
-            res.end();
-            return;
-        }
         res.redirect("/drug/" + w);
         res.end();  // redirect to drug data page
     });
