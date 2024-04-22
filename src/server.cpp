@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <string>
+#include <chrono>
+#include <sstream>
 #include "../include/crow.h"
 #include <boost/algorithm/string.hpp>
 #include <boost/url/src.hpp>
@@ -142,10 +144,25 @@ int main() {
         }
         auto dataStructure = std::string(ds);
         std::string drugJson;
-        if (dataStructure == "List")
-            drugJson = DrugSerializer(al->getDrugInfo(dn));
-        else
-            drugJson = DrugSerializer(am->getDrugInfo(dn));
+        if (dataStructure == "List") {
+            auto start = std::chrono::high_resolution_clock::now();
+            auto info = al->getDrugInfo(dn);
+            auto end = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
+            std::stringstream commadTime;
+            commadTime.imbue(std::locale(""));
+            commadTime << duration;
+            drugJson = DrugSerializer(info, commadTime.str());
+        } else {
+            auto start = std::chrono::high_resolution_clock::now();
+            auto info = am->getDrugInfo(dn);
+            auto end = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
+            std::stringstream commadTime;
+            commadTime.imbue(std::locale(""));
+            commadTime << duration;
+            drugJson = DrugSerializer(info, commadTime.str());
+        }
         auto response = crow::response{drugJson};
         return response;
     });

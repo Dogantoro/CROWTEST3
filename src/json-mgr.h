@@ -61,7 +61,7 @@ std::string convertName(std::string name) {
     }
 
 // Converts Drug + List of its interactions into a single JSON file
-std::string DrugSerializer(const DrugInfo drug) {
+std::string DrugSerializer(const DrugInfo drug, std::string time) {
     std::set<InteractionDesc> interactionList = drug.interactions;
     boost::json::object response;
     response["drugName"] = drug.name;
@@ -88,7 +88,6 @@ std::string DrugSerializer(const DrugInfo drug) {
     interactions["unknown"] = unknownList;
 
     response["interactions"] = interactions;
-
+    response["searchTime"] = time + " ns";
     return boost::json::serialize(response);
 }
-
