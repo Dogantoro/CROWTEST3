@@ -134,7 +134,13 @@ int main() {
         boost::urls::pct_string_view decoded(drugName);
         auto dn = decoded.decode();
         dn = convertName(dn);
-        auto dataStructure = std::string(req.url_params.get("dataStructure"));
+        auto ds = req.url_params.get("dataStructure");
+        if (!ds) {
+            auto response = crow::response{"{}"};
+            response.set_header("content-type", "application/json");
+            return response;
+        }
+        auto dataStructure = std::string(ds);
         std::string drugJson;
         if (dataStructure == "List")
             drugJson = DrugSerializer(al->getDrugInfo(dn));
