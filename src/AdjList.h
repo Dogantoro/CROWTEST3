@@ -15,7 +15,7 @@ public:
     int getSize() {
         return (int)(graph.size());
     }
-    std::vector<InteractionDesc> getInteractions(DrugInfo drug) {
+    std::set<InteractionDesc> getInteractions(DrugInfo drug) {
         return drug.DrugInfo::interactions;
     }
 
@@ -43,15 +43,17 @@ public:
 };
 
 void AdjList::addEdge(std::string from, std::string to, std::string interType){
-    DrugInfo empty;
     DrugInfo fromDrug, toDrug;
     fromDrug.name = from;
     toDrug.name = to;
-    if (graph.find(from) == graph.end())
+    if (!drugExists(from))
         graph[from] = fromDrug;
-    if (graph.find(to) == graph.end())
+    if (!drugExists(to))
         graph[to] = toDrug;
-    InteractionDesc interaction = {to, convert(interType)};
-    graph[from].DrugInfo::interactions.push_back(interaction);
+    InteractionDesc inter1 = {to, convert(interType)};
+    // not all interactions involving a certain drug are displayed without this
+    InteractionDesc inter2 = {from, convert(interType)};
+    graph[from].DrugInfo::interactions.insert(inter1);
+    graph[to].DrugInfo::interactions.insert(inter2);
 }
 
