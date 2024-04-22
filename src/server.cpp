@@ -168,7 +168,7 @@ int main() {
         return response;
     });
 
-    CROW_ROUTE(app, "/random")([&al](const crow::request& req, crow::response &res) {
+    CROW_ROUTE(app, "/random")([&al, &randNum](const crow::request& req, crow::response &res) {
         std::string randomDrug = al->randomDrug(randNum);
         auto encoded = boost::urls::encode(randomDrug, boost::urls::unreserved_chars);
         res.redirect("/drug/" + encoded);
