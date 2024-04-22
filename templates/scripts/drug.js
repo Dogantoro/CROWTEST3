@@ -8,14 +8,9 @@ async function loadJson() {
     const drugData = await drugFile.json(); // convert string to json object
 
     // generate html code for drug info side card from json
-    var generics = "";
-    for(i in drugData.generics){
-        generics = generics + drugData.generics[i] + "<br>";
-    }
 
     // insert side card content
     document.getElementById("drugName").innerHTML = drugData.drugName;
-    document.getElementById("generics").innerHTML = generics;
 
     // generate drug interaction code to return
     var majorInter = "";
