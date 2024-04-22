@@ -42,9 +42,6 @@ void AdjList::addEdge(std::string from, std::string to, std::string interType){
         graph[from] = fromDrug;
     if (graph.find(to) == graph.end())
         graph[to] = toDrug;
-    InteractionDesc fromInter = {to, convert(interType)};
-    InteractionDesc toInter = {from, convert(interType)};
-    graph[from].DrugInfo::interactions.push_back(fromInter);
-    graph[to].DrugInfo::interactions.push_back(toInter);
+    InteractionDesc interaction = {to, convert(interType)};
+    graph[from].DrugInfo::interactions.push_back(interaction);
 }
-
