@@ -25,8 +25,7 @@ public:
             return graph[drug];
     }
 
-    std::string randomDrug() { //finds a random drug in the graph
-        std::mt19937 randNum(std::time(nullptr));
+    std::string randomDrug(std::mt19937 &randNum) {  // finds a random drug in the graph
         int index = randNum() % getSize();
         auto random = *std::next(std::begin(graph), index);
         return random.first;

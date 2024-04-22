@@ -14,6 +14,7 @@
 int main() {
     std::cout << "Starting rx-warning server!\nLoading CSVs";
     std::cout.flush();
+    std::mt19937 randNum(std::time(nullptr));
     AdjList* al = new AdjList();
     AdjMatrix* am = new AdjMatrix();
     processCSVs(al, am);
@@ -168,7 +169,7 @@ int main() {
     });
 
     CROW_ROUTE(app, "/random")([&al](const crow::request& req, crow::response &res) {
-        std::string randomDrug = al->randomDrug();
+        std::string randomDrug = al->randomDrug(randNum);
         auto encoded = boost::urls::encode(randomDrug, boost::urls::unreserved_chars);
         res.redirect("/drug/" + encoded);
         res.end();
