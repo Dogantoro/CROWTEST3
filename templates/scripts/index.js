@@ -11,6 +11,5 @@ function addAlert(){
     elem.insertAdjacentHTML("afterend", searchAlert);
 }
 
-console.log(window.location.search);
 if (window.location.search == "?error")
     addAlert();

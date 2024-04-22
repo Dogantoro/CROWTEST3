@@ -118,3 +118,7 @@ li.drug-bullet {
 	font-size: calc(0.25em + 1vw);
 	margin-left: 6px;
 }
+
+.badge {
+	margin-right: 0.5em;
+}
