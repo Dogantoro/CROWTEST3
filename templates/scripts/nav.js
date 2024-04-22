@@ -44,3 +44,7 @@ function insertNav() {  // inserts nav bar code into html file when inserted via
 }
 
 insertNav();  // calls function
+
+if(document.cookie == "dataStruct=matrix") {
+	document.body.style.backgroundColor = "#0d6efd";
+}
