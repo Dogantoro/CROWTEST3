@@ -1,8 +1,5 @@
 {
     "drugName": "",
-    "activeIngredients": "",
-    "brandNames": [""],
-    "generics": [""],
 
     "interactions": {
         "major": [""],

@@ -1,7 +1,6 @@
 #pragma once
 #include "json-mgr.h"
 #include <unordered_map>
-#include <cctype>
 #include <ctime>
 #include <random>
 
@@ -12,10 +11,10 @@ private:
 
 public:
     void addEdge(std::string from, std::string to, std::string interType);
-    int getSize() {
+    int getSize() { //how many drugs are in graph
         return (int)(graph.size());
     }
-    std::vector<InteractionDesc> getInteractions(DrugInfo drug) {
+    std::set<InteractionDesc> getInteractions(DrugInfo drug) {
         return drug.DrugInfo::interactions;
     }
 
@@ -25,16 +24,8 @@ public:
     DrugInfo getDrugInfo(std::string drug) {
             return graph[drug];
     }
-    // name should have first letter be capitalized and rest should not be
-    void convertName(std::string &name) {
-        if (name.empty())
-            return;
-        name[0] = std::toupper(name[0]);
-        for (size_t i = 1; i < name.size(); ++i)
-            name[i] = std::tolower(name[i]);
-    }
 
-    std::string randomDrug() {
+    std::string randomDrug() { //finds a random drug in the graph
         std::mt19937 randNum(std::time(nullptr));
         int index = randNum() % getSize();
         auto random = *std::next(std::begin(graph), index);
@@ -43,15 +34,17 @@ public:
 };
 
 void AdjList::addEdge(std::string from, std::string to, std::string interType){
-    DrugInfo empty;
     DrugInfo fromDrug, toDrug;
     fromDrug.name = from;
     toDrug.name = to;
-    if (graph.find(from) == graph.end())
+    if (!drugExists(from))
         graph[from] = fromDrug;
-    if (graph.find(to) == graph.end())
+    if (!drugExists(to))
         graph[to] = toDrug;
-    InteractionDesc interaction = {to, convert(interType)};
-    graph[from].DrugInfo::interactions.push_back(interaction);
+    InteractionDesc inter1 = {to, convert(interType)};
+    // not all interactions involving a certain drug are displayed without this
+    InteractionDesc inter2 = {from, convert(interType)};
+    graph[from].DrugInfo::interactions.insert(inter1);
+    graph[to].DrugInfo::interactions.insert(inter2);
 }
 

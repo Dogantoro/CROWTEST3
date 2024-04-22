@@ -7,7 +7,7 @@
 #include "AdjList.h"
 #include "AdjMatrix.h"
 
-
+// loads database info into an adjacency list
 void processCSVs(AdjList* graph){
     boost::progress_display progress(8);
     // holds the names of the database files
@@ -45,6 +45,7 @@ void processCSVs(AdjList* graph){
     }
 }
 
+// loads database info into an adjacency matrix
 void processCSVs(AdjMatrix* graph){
     boost::progress_display progress(8);
     // holds the names of the database files

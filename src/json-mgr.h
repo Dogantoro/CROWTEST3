@@ -2,6 +2,8 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <set>
+#include <cctype>
 #include <boost/json/src.hpp>
 
 // Enum of levels of drug interactions
@@ -17,15 +19,16 @@ enum class InteractionSeverity {
 struct InteractionDesc {
     std::string name;
     InteractionSeverity severity;
+    // allows to order by name
+    bool operator<(const InteractionDesc& other) const {
+        return name < other.name;
+    }
 };
 
 // Complete drug information
 struct DrugInfo {
     std::string name;
-    std::string ingredients;
-    std::vector<std::string> brandNames;
-    std::vector<std::string> Generics;
-    std::vector<InteractionDesc> interactions;
+    std::set<InteractionDesc> interactions;
 };
 
 // converts string to correct interaction severity enum
@@ -46,15 +49,21 @@ boost::json::array jsonize(const std::vector<std::string>& vec) {
     return arr;
 }
 
+// converts name of drug to proper format
+// name of drug should have first letter be capitalized and rest should not be
+void convertName(std::string &name) {
+    if (name.empty())
+        return;
+    name[0] = std::toupper(name[0]);
+    for (size_t i = 1; i < name.size(); ++i)
+        name[i] = std::tolower(name[i]);
+    }
+
 // Converts Drug + List of its interactions into a single JSON file
 std::string DrugSerializer(const DrugInfo drug) {
-    std::vector<InteractionDesc> interactionList = drug.interactions;
+    std::set<InteractionDesc> interactionList = drug.interactions;
     boost::json::object response;
     response["drugName"] = drug.name;
-    response["ingredients"] = drug.ingredients;
-    response["brandNames"] = jsonize(drug.brandNames);
-    response["generics"] = jsonize(drug.Generics);
-
     boost::json::object interactions;
     boost::json::array majorList, moderateList, minorList, unknownList;
     for (const auto& interaction : interactionList) {
