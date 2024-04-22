@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <string>
 #include "json-mgr.h"
+#include <ctime>
 
 class AdjMatrix {
 private:
@@ -16,8 +17,14 @@ public:
     int getSize(){ //just amount of drugs in graph
         return 8009;
     }
+    
     std::set<InteractionDesc> getInteractions(std::string drug);
     DrugInfo getDrugInfo(std::string drug);
+    std::string randomDrug() { //finds a random drug in the graph
+        std::mt19937 randNum(std::time(nullptr));
+        int index = randNum() % getSize();
+        return reverseMapper[index];
+    }
 };
 
 void AdjMatrix::addEdge(std::string from, std::string to, std::string interType) {

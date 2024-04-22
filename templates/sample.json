@@ -1,8 +1,5 @@
 {
     "drugName": "Drug Name",
-    "activeIngredients": "Active ingredients here",
-    "brandNames": ["brand name 1", "brand name 2"],
-    "generics": ["generic 1", "generic 2"],
 
     "interactions": {
         "major": ["major drug 1", "major drug 2"],
