@@ -36,7 +36,7 @@ listRadio.onclick = adjList;
 matrixRadio.onclick = adjMatrix;
 
 
-if (document.cookie.indexOf('dataStruct=') == -1 ){
+if (document.cookie.indexOf('dataStruct=') == -1) {
     document.cookie = "dataStruct=list";
 }
 

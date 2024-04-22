@@ -146,12 +146,22 @@ li.drug-bullet {
 	margin-right: 0.5em;
 }
 
+.collapse {
+	overflow: auto;
+}
+
+.drug-dd {
+	max-height: 25vh;
+}
+
+/* scroll bar */
+
 ::-webkit-scrollbar {
 	width: 15px;
 }
 
 ::-webkit-scrollbar-track {
-	background-color: transparent;
+	background-color: white;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -163,11 +173,4 @@ li.drug-bullet {
 
 ::-webkit-scrollbar-thumb:hover {
 	background-color: rgba(237, 237, 237, 0.8);
-}
-.collapse {
-	overflow: auto;
-}
-
-.drug-dd {
-	max-height: 25vh;
 }
