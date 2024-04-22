@@ -10,14 +10,11 @@
 #include "./json-mgr.h"
 
 int main() {
-    std::cout << "Starting rx-warning server!\nLoading CSVs for Adjacency List";
+    std::cout << "Starting rx-warning server!\nLoading CSVs";
     std::cout.flush();
     AdjList* al = new AdjList();
-    processCSVs(al);
-    std::cout << "\nLoading CSVs for Adjacency Matrix";
-    std::cout.flush();
     AdjMatrix* am = new AdjMatrix();
-    processCSVs(am);
+    processCSVs(al, am);
     std::cout << "\nServer Started" << std::endl;
 
     crow::SimpleApp app;
