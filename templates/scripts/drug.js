@@ -17,6 +17,7 @@ async function loadJson() {
 
     // insert side card content
     document.getElementById("drugName").innerHTML = drugData.drugName;
+    document.getElementById("search-time").insertAdjacentHTML("afterbegin", drugData.searchTime);
 
     // generate drug interaction code to return
     var majorInter = "";
