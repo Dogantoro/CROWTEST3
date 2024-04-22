@@ -92,7 +92,7 @@ int main()
             return;
         }
         al->convertName(z);
-        if (!al->ifDrug(z)) {
+        if (!al->drugExists(z)) {
             res.redirect("/?error");
             res.end();
             return;
@@ -137,6 +137,13 @@ int main()
         auto drugJson = DrugSerializer(al->getDrugInfo(dn));
         auto response = crow::response{drugJson};
         return response;
+    });
+
+    CROW_ROUTE(app, "/random")([&al](const crow::request& req, crow::response &res) {
+        std::string randomDrug = al->randomDrug();
+        auto encoded = boost::urls::encode(randomDrug, boost::urls::unreserved_chars);
+        res.redirect("/drug/" + encoded);
+        res.end();
     });
 
     app.port(18080).multithreaded().run();
