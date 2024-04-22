@@ -44,8 +44,8 @@ int main() {
     });
 
     // navbar JS
-    CROW_ROUTE(app, "/scripts/nav.js")([](){
-        auto page = crow::mustache::load_text("scripts/nav.js");
+    CROW_ROUTE(app, "/scripts/content.js")([](){
+        auto page = crow::mustache::load_text("scripts/content.js");
         auto response = crow::response{page};
         response.set_header("content-type", "text/javascript");
         return response;
