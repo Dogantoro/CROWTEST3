@@ -14,7 +14,7 @@ const nav = `
   <div class="collapse navbar-collapse " id="navbarNav">
 	<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
 	  <li class="nav-item">
-		<a class="nav-link nav-item fs-4" href="/about">About</a>
+		<a class="nav-link nav-item fs-4" href="/random">Randomize</a>
 	  </li>
 	</ul>
 	
