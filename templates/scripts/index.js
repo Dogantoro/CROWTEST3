@@ -21,10 +21,12 @@ if (window.location.search == "?error") {
 
 function adjList() {
     document.cookie = "dataStruct=list";
+    location.reload();
 }
 
 function adjMatrix() {
     document.cookie = "dataStruct=matrix";
+    location.reload();
 }
 
 var listRadio = document.getElementById('AdjListRadio');
@@ -36,6 +38,13 @@ matrixRadio.onclick = adjMatrix;
 
 if (document.cookie.indexOf('dataStruct=') == -1 ){
     document.cookie = "dataStruct=list";
+}
+
+if(document.cookie == "dataStruct=matrix") {
+    matrixRadio.checked = true;
+}
+else {
+    listRadio.checked = true;
 }
 
 console.log(document.cookie);
