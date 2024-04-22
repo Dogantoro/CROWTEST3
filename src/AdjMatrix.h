@@ -5,8 +5,11 @@
 
 class AdjMatrix {
 private:
+    // the x and y coords are different drugs and the overall coordinate is the interaction between the drugs
     InteractionSeverity graph[8009][8009];
+    // to keep track of the index of a drug
     std::unordered_map<std::string, int> mapper;
+    // to easily access a drug by index
     std::string reverseMapper[8009];
 public:
     void addEdge(std::string from, std::string to, std::string interType);

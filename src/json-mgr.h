@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <set>
+#include <cctype>
 #include <boost/json/src.hpp>
 
 // Enum of levels of drug interactions
@@ -50,6 +51,16 @@ boost::json::array jsonize(const std::vector<std::string>& vec) {
     }
     return arr;
 }
+
+// converts name of drug to proper format
+// name of drug should have first letter be capitalized and rest should not be
+void convertName(std::string &name) {
+    if (name.empty())
+        return;
+    name[0] = std::toupper(name[0]);
+    for (size_t i = 1; i < name.size(); ++i)
+        name[i] = std::tolower(name[i]);
+    }
 
 // Converts Drug + List of its interactions into a single JSON file
 std::string DrugSerializer(const DrugInfo drug) {

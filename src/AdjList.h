@@ -1,7 +1,6 @@
 #pragma once
 #include "json-mgr.h"
 #include <unordered_map>
-#include <cctype>
 #include <ctime>
 #include <random>
 
@@ -12,7 +11,7 @@ private:
 
 public:
     void addEdge(std::string from, std::string to, std::string interType);
-    int getSize() {
+    int getSize() { //how many drugs are in graph
         return (int)(graph.size());
     }
     std::set<InteractionDesc> getInteractions(DrugInfo drug) {
@@ -25,16 +24,8 @@ public:
     DrugInfo getDrugInfo(std::string drug) {
             return graph[drug];
     }
-    // name should have first letter be capitalized and rest should not be
-    void convertName(std::string &name) {
-        if (name.empty())
-            return;
-        name[0] = std::toupper(name[0]);
-        for (size_t i = 1; i < name.size(); ++i)
-            name[i] = std::tolower(name[i]);
-    }
 
-    std::string randomDrug() {
+    std::string randomDrug() { //finds a random drug in the graph
         std::mt19937 randNum(std::time(nullptr));
         int index = randNum() % getSize();
         auto random = *std::next(std::begin(graph), index);
