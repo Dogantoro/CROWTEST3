@@ -1,9 +1,15 @@
 // gets and displays information prompted by the search
 async function loadJson() {
     
+    if (document.cookie == "dataStruct=matrix") {
+        var DSA = "Matrix";
+    } else {
+        var DSA = "List";
+    }
     // makes get request to the server to retrieve drug info json to be displayed
     const drugFile = await fetch("/api?" + new URLSearchParams({
-        drugName: window.location.pathname.split("/").pop()
+        drugName: window.location.pathname.split("/").pop(),
+        dataStructure:  DSA
     }));
     const drugData = await drugFile.json(); // convert string to json object
 

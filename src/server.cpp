@@ -117,7 +117,7 @@ int main() {
         boost::urls::pct_string_view decoded(a);
         auto txt = decoded.decode();
         auto page = crow::mustache::load("drug.html");
-        crow::mustache::context ctx({{"DrugName", txt}});
+        crow::mustache::context ctx({{"DSA", txt}});
         return page.render(ctx);
     });
 
@@ -127,7 +127,7 @@ int main() {
         return page;
     });
 
-    CROW_ROUTE(app, "/api")([&al](const crow::request& req){
+    CROW_ROUTE(app, "/api")([&al, &am](const crow::request& req){
         auto drugName = req.url_params.get("drugName");
         if (!drugName) {
             auto response = crow::response{"{}"};
@@ -137,7 +137,12 @@ int main() {
         boost::urls::pct_string_view decoded(drugName);
         auto dn = decoded.decode();
         dn = convertName(dn);
-        auto drugJson = DrugSerializer(al->getDrugInfo(dn));
+        auto dataStructure = std::string(req.url_params.get("dataStructure"));
+        std::string drugJson;
+        if (dataStructure == "List")
+            drugJson = DrugSerializer(al->getDrugInfo(dn));
+        else
+            drugJson = DrugSerializer(am->getDrugInfo(dn));
         auto response = crow::response{drugJson};
         return response;
     });
