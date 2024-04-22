@@ -34,17 +34,20 @@ public:
 };
 
 void AdjList::addEdge(std::string from, std::string to, std::string interType){
+    // interactions shouldnt change their drug names
+    auto fromConverted = convertName(from);
+    auto toConverted = convertName(to);
     DrugInfo fromDrug, toDrug;
     fromDrug.name = from;
     toDrug.name = to;
-    if (!drugExists(from))
-        graph[from] = fromDrug;
-    if (!drugExists(to))
-        graph[to] = toDrug;
+    if (!drugExists(fromConverted))
+        graph[fromConverted] = fromDrug;
+    if (!drugExists(toConverted))
+        graph[toConverted] = toDrug;
     InteractionDesc inter1 = {to, convert(interType)};
     // not all interactions involving a certain drug are displayed without this
     InteractionDesc inter2 = {from, convert(interType)};
-    graph[from].DrugInfo::interactions.insert(inter1);
-    graph[to].DrugInfo::interactions.insert(inter2);
+    graph[fromConverted].DrugInfo::interactions.insert(inter1);
+    graph[toConverted].DrugInfo::interactions.insert(inter2);
 }
 

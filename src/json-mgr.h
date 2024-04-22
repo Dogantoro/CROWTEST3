@@ -51,12 +51,13 @@ boost::json::array jsonize(const std::vector<std::string>& vec) {
 
 // converts name of drug to proper format
 // name of drug should have first letter be capitalized and rest should not be
-void convertName(std::string &name) {
+std::string convertName(std::string name) {
     if (name.empty())
-        return;
+        return name;
     name[0] = std::toupper(name[0]);
     for (size_t i = 1; i < name.size(); ++i)
         name[i] = std::tolower(name[i]);
+    return name;
     }
 
 // Converts Drug + List of its interactions into a single JSON file

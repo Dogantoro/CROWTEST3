@@ -19,22 +19,21 @@
       <div class= "row gx-4 ">
         <div class = "col-4">
           <div class="card drug-card p-2 mb-4">
-            <div class="card-body text-start ">
+            <div class="card-body text-start">
               <h4 class="blur">Drug Name:</h4>
               <h2 id="drugName"></h2>
             </div>
           </div>
-          <div class="card drug-card">
-            <div class="card-body">
-              <h4>Enjoying our search tool? <br>
-                  Check out a random interaction page by clicking "RANDOMIZE" above!
-              </h4>
+          <div class="card drug-card p-2">
+            <div class="card-body text-start">
+              <h4 class="card-title">Enjoying our search tool? </h4>
+              <p class="body-text">Check out a random interaction page by clicking "RANDOMIZE" above!</p>
             </div>
           </div>
         </div>
         
         <div class="col-8">
-          <div class= "card drug-card">
+          <div class= "card drug-card" id="drug-facts-card">
             <div class="df-body">
               <h2 class="card-title mt-2">Drug Interactions</h2>
               <hr class="drug-label border-4">
@@ -45,7 +44,7 @@
                       <button class="accordion-button drug-accordion collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#major" aria-expanded="false" aria-controls="collapseExample">
                         <h3 id="major-title">major </h3>
                       </button>
-                    <div class="collapse text-start" id="major">
+                    <div class="collapse text-start drug-dd" id="major">
                         <ul id="majordd" class="list-unstyled"></ul>
                     </div>
                     <hr class="drug-label border-3">
@@ -55,7 +54,7 @@
                       <button class="accordion-button drug-accordion collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#moderate" aria-expanded="false" aria-controls="collapseExample">
                         <h3 id="moderate-title">moderate </h3>
                       </button>
-                    <div class="collapse text-start" id="moderate">
+                    <div class="collapse text-start drug-dd" id="moderate">
                         <ul id="moderatedd" class="list-unstyled"></ul>
                     </div>
                     <hr class="drug-label border-3">
@@ -65,7 +64,7 @@
                       <button class="accordion-button drug-accordion collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#minor" aria-expanded="false" aria-controls="collapseExample">
                         <h3 id="minor-title">minor </h3>
                       </button>
-                    <div class="collapse text-start" id="minor">
+                    <div class="collapse text-start drug-dd" id="minor">
                         <ul id="minordd" class="list-unstyled"></ul>
                     </div>
                     <hr class="drug-label border-3">
@@ -75,7 +74,7 @@
                       <button class="accordion-button drug-accordion collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#unknown" aria-expanded="false" aria-controls="collapseExample">
                         <h3 id="unknown-title">unknown </h3>
                       </button>
-                    <div class="collapse text-start" id="unknown">
+                    <div class="collapse text-start drug-dd" id="unknown">
                         <ul id="unknowndd" class="list-unstyled"></ul>
                     </div>
                     <hr class="drug-label border-3">
