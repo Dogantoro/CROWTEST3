@@ -1,17 +1,17 @@
 # RX Warning
-A website for looking up the drug-to-drug interactions for all pharmaceuticals. Interactions are grouped by interaction severity and alphabetically sorted by drug names. RX Warning is a very powerful tool for quickly findin some common interacting drugs for your meds. Do not rely on rx-warning alone to determine your meds safety; always consult your physician first!
+A website for looking up the drug-to-drug interactions for all pharmaceuticals. Interactions are grouped by interaction severity and alphabetically sorted by drug names. RX Warning is a very powerful tool for quickly finding some common interacting drugs for your meds. Do not rely on rx-warning alone to determine your med's safety; always consult your physician first!
 
 ## Guide
 The website can be accessed directly at [rx-warning.com](https://rx-warning.com). Input any drug's (generic) name to get a list of interacting drugs and the severities of those interactions.
 
 Clicking on the Random button at the top forwards to the webpage of interactions for a random drug.
 
-The Advanced Settings section under the searchbar can change the underlyinh data structure used to store the graph of interactions. The differences in speed of the Adjacency List vs the Adjacency Matrix is displayed on the the drug page. When the page is accessed with Adjacency List is selected, the background is red, and when it is Adjacency Matrix, the background is blue.
+The Advanced Settings section under the search bar can change the underlying data structure used to store the graph of interactions. The differences in speed of the Adjacency List vs the Adjacency Matrix is displayed on the the drug page. When the page is accessed with Adjacency List is selected, the background is red, and when it is Adjacency Matrix, the background is blue.
 
-If there are missing or undefined elements, reset the cookies and cache, and/or do CTRL+SHIFT+R on chrome to troubleshoot.
+If there are missing or undefined elements, reset the cookies and cache, and/or do CTRL+SHIFT+R on Chrome to troubleshoot.
 
 ## Installation
-No installation is neccesary to simply access the website, but if you wish to host your own instance of rx-warning for testing and contribution, this is a detailed guide for installing the dependencies and getting the server running on 64-bit Windows.
+No installation is necessary to simply access the website, but if you wish to host your own instance of rx-warning for testing and contribution, this is a detailed guide for installing the dependencies and getting the server running on 64-bit Windows.
 
 If these instructions do not apply to you, the general steps should be installing Boost, compiling Boost, installing ASIO standalone headers, and running CMake.
 
@@ -33,7 +33,7 @@ If these instructions do not apply to you, the general steps should be installin
 ### Set Up ASIO
 The easiest way we have found to install boost is through vcpkg. You may skip to step 4 if you already have VCPKG set up.
 
-1. Create an empty directory anywehre on your computer to set up VCPKG, C:/Users/youracct/VCPKG works fine.
+1. Create an empty directory anywhere on your computer to set up VCPKG, C:/Users/youracct/VCPKG works fine.
 2. Open this directory in powershell and clone the VCPKG repo using: `git clone https://github.com/microsoft/vcpkg.git`
 3. Run the VCPKG installation with: `cd vcpkg; .\bootstrap-vcpkg.bat`
 4. Integrate VCPKG into MSVC with `.\vcpkg.exe integrate install`
